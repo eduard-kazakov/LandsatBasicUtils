@@ -14,8 +14,8 @@ pip install git+https://github.com/eduard-kazakov/LandastBasicUtils
 ## How to use
 
 There are two classes:
-* MetadataReader - reads all metadata to convenient dictionary. In addition to basic metadata from *MTL.txt there are added information about wavelenghts and solar irradiances for each band. 
-* BandCalibrator - performs radiometric calibration (radiance, reflectance, brightness temperature)
+* LandsatMetadataReader - reads all metadata to convenient dictionary. In addition to basic metadata from *MTL.txt there are added information about wavelenghts and solar irradiances for each band. 
+* LandsatBandCalibrator - performs radiometric calibration (radiance, reflectance, brightness temperature)
 
 
 MetadataReader usage example:
