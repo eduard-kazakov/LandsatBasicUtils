@@ -44,6 +44,7 @@ class LandsatBandCalibrator():
         corrected_radiances = radiance_array - Lhaze
         corrected_reflectance = self.get_reflectance_as_array(not_native_radiance_array=corrected_radiances)
         corrected_reflectance[corrected_reflectance < 0] = 0
+        
         return corrected_reflectance
 
     def get_brightness_temperature_as_array(self):
