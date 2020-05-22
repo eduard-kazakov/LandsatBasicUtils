@@ -33,6 +33,19 @@ class LandsatBandCalibrator():
         reflectance = (np.pi*radiance*d*d)/(E*np.sin(O))
         return reflectance
 
+    def get_dos_corrected_reflectance_as_array (self):
+        radiance_array = self.get_radiance_as_array()
+        dark_object_radiance = np.nanpercentile(radiance_array,0.01)
+        O = np.deg2rad(float(self.metadata['SUN_ELEVATION']))
+        E = self.band_metadata['solar_irradiance']
+        d = float(self.metadata['EARTH_SUN_DISTANCE'])
+        L_1p = (0.01*np.cos(O)*np.cos(O)*np.cos(O)*E) / (np.pi*d*d)
+        Lhaze = dark_object_radiance - L_1p
+        corrected_radiances = radiance_array - Lhaze
+        corrected_reflectance = self.get_reflectance_as_array(not_native_radiance_array=corrected_radiances)
+        corrected_reflectance[corrected_reflectance < 0] = 0
+        return corrected_reflectance
+
     def get_brightness_temperature_as_array(self):
         if self.band_metadata['type'] != 'thermal':
             raise TypeError('Given band is reflectance')
