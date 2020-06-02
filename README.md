@@ -8,7 +8,7 @@ numpy, gdal
 ## Installation
 
 ```bash
-pip install git+https://github.com/eduard-kazakov/LandastBasicUtils
+pip install git+https://github.com/eduard-kazakov/LandsatBasicUtils
 ```
 
 ## How to use
