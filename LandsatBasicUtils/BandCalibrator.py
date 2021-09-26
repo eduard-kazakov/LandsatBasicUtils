@@ -1,5 +1,8 @@
 from .MetadataReader import LandsatMetadataReader
-import gdal
+try:
+    import gdal
+except:
+    from osgeo import gdal
 import numpy as np
 
 class LandsatBandCalibrator():
